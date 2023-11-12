@@ -11,7 +11,7 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  int selectedOption = -1; // Default value indicating no option selected
+  int selectedOption = -1;
 
   @override
   Widget build(BuildContext context) {
