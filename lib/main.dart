@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_task/presentation/home_page.dart';
-import 'package:quiz_task/routes.dart';
+import 'package:quiz_task/router/routes.dart';
 
 void main() {
   runApp(const MyApp());
