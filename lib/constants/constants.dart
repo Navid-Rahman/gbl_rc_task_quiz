@@ -47,5 +47,7 @@ const kExtraSmallTextStyle = TextStyle(
   color: Colors.white,
 );
 
+const kAppBarColor = Colors.blueGrey;
 const kCardColor = Color(0xff526D82);
 const kCardBorderColor = Color(0xff9DB2BF);
+const kButtonColor = Color(0x6FAAD9FF);

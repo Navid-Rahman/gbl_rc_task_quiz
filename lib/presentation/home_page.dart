@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_task/constants/constants.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -10,15 +11,11 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('GBL Quiz App Task'),
-        backgroundColor: Colors.blue,
+        backgroundColor: kAppBarColor,
       ),
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.blue, Colors.green], // Set your gradient colors
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
+          color: kAppBarColor,
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -50,12 +47,7 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 foregroundColor: Colors.white,
-                backgroundColor: const Color.fromRGBO(
-                  0,
-                  0,
-                  0,
-                  0.5,
-                ),
+                backgroundColor: kButtonColor,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
                 textStyle: const TextStyle(
