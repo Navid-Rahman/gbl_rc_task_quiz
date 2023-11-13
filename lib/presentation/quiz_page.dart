@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_task/constants/constants.dart';
+import 'package:quiz_task/presentation/question_card.dart';
+
+import 'answer_card.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({super.key});
@@ -19,15 +22,11 @@ class _QuizPageState extends State<QuizPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Quiz Page'),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.blueGrey,
       ),
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.blue, Colors.green],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
+          color: Colors.blueGrey,
         ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -59,83 +58,28 @@ class _QuizPageState extends State<QuizPage> {
               Expanded(
                 child: Column(
                   children: [
-                    const Column(
-                      children: [
-                        // Add Question here
-                        Text(
-                          'What is the capital of India? What is the capital of India? What is the capital of India?',
-                          style: kMediumTextStyle,
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        // Add question marks here
-                        Align(
-                          alignment: Alignment.topRight,
-                          child: Text(
-                            '10 points',
-                            style: kSmallTextStyle,
-                          ),
-                        ),
-                      ],
-                    ),
+                    // Add Question here
+                    const QuestionCard(),
                     const SizedBox(
                       height: 20,
                     ),
 
-                    // Add an image containing the full width of the screen, but not the full height
-                    // SizedBox(
-                    //   width: double.infinity,
-                    //   height: 200,
-                    //   child: Image.asset(
-                    //     'assets/your_image.jpg',
-                    //     fit: BoxFit.cover,
-                    //   ),
-                    // ),
-
-                    Column(
-                      children: [
-                        RadioListTile(
-                          title: const Text('Option A', style: kSmallTextStyle),
-                          value: 0,
-                          fillColor: MaterialStateProperty.all(Colors.white),
-                          groupValue: selectedOption,
-                          onChanged: (value) {
-                            setState(() {
-                              selectedOption = value as int;
-                            });
-                          },
-                        ),
-                        RadioListTile(
-                          title: const Text(
-                            'Option B',
-                            style: kSmallTextStyle,
-                          ),
-                          value: 1,
-                          fillColor: MaterialStateProperty.all(Colors.white),
-                          groupValue: selectedOption,
-                          onChanged: (value) {
-                            setState(() {
-                              selectedOption = value as int;
-                            });
-                          },
-                        ),
-                        RadioListTile(
-                          title: const Text(
-                            'Option C',
-                            style: kSmallTextStyle,
-                          ),
-                          value: 2,
-                          fillColor: MaterialStateProperty.all(Colors.white),
-                          groupValue: selectedOption,
-                          onChanged: (value) {
-                            setState(() {
-                              selectedOption = value as int;
-                            });
-                          },
-                        ),
-                      ],
-                    ),
+                    // Add Options here
+                    ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: 4,
+                        itemBuilder: (context, index) {
+                          return GestureDetector(
+                            onTap: () {},
+                            child: AnswerCard(
+                              currentIndex: index,
+                              question: 'question',
+                              isSelected: false,
+                              selectedAnswerIndex: 0,
+                              correctAnswerIndex: 0,
+                            ),
+                          );
+                        }),
                   ],
                 ),
               ),

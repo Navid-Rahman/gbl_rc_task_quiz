@@ -46,3 +46,6 @@ const kExtraSmallTextStyle = TextStyle(
   height: 1.5,
   color: Colors.white,
 );
+
+const kCardColor = Color(0xff526D82);
+const kCardBorderColor = Color(0xff9DB2BF);
