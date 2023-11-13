@@ -15,12 +15,12 @@ class QuizessLoading extends QuizessState {
 }
 
 class QuizessLoaded extends QuizessState {
-  List<QuizModel> quizList;
+  List<Question> questionList;
 
-  QuizessLoaded({required this.quizList});
+  QuizessLoaded({required this.questionList});
 
   @override
-  List<Object> get props => [quizList];
+  List<Object> get props => [questionList];
 }
 
 class QuizessError extends QuizessState {

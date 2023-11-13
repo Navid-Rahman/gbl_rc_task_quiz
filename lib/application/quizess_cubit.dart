@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:logger/logger.dart';
 
 import '../models/quiz_model.dart';
 import '../services/quiz_api_service.dart';
@@ -7,13 +8,17 @@ import '../services/quiz_api_service.dart';
 part 'quizess_state.dart';
 
 class QuizessCubit extends Cubit<QuizessState> {
-  QuizessCubit() : super(QuizessInitial());
+  final QuizApiService quizApiService = QuizApiService();
+  late QuizModel quizData;
+  final Logger logger;
 
-  void getQuizList() async {
+  QuizessCubit({required this.logger}) : super(QuizessInitial());
+
+  Future<void> fetchQuizData() async {
     emit(QuizessLoading());
     try {
-      final quizList = await QuizApiService().getQuizzes();
-      emit(QuizessLoaded(quizList: quizList));
+      quizData = await quizApiService.getQuizzes();
+      emit(QuizessLoading());
     } catch (e) {
       emit(QuizessError(message: e.toString()));
     }
