@@ -16,6 +16,10 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   int selectedOption = -1;
 
+  int selectedQuestionIndex = 0;
+  int questionIndex = 0;
+  int score = 0;
+
   @override
   Widget build(BuildContext context) {
     // Get.put(QuizController());
@@ -75,7 +79,7 @@ class _QuizPageState extends State<QuizPage> {
                               currentIndex: index,
                               question: 'question',
                               isSelected: false,
-                              selectedAnswerIndex: 0,
+                              selectedAnswerIndex: 1,
                               correctAnswerIndex: 0,
                             ),
                           );
