@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_task/application/quizess_cubit.dart';
 import 'package:quiz_task/constants/constants.dart';
+import 'package:quiz_task/main.dart';
 import 'package:quiz_task/presentation/question_card.dart';
 
 import '../models/quiz_model.dart';
@@ -23,6 +24,16 @@ class _QuizPageState extends State<QuizPage> {
   int questionIndex = 0;
   int score = 0;
 
+  // Initialize the cubit
+  final quizessCubit = QuizessCubit();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    quizessCubit.fetchQuizData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,6 +43,7 @@ class _QuizPageState extends State<QuizPage> {
       ),
       body: BlocBuilder<QuizessCubit, QuizessState>(
         builder: (context, state) {
+          print('Current state: $state'); // Add this line for debugging
           if (state is QuizessLoading) {
             return const Center(
               child: CircularProgressIndicator(),
@@ -42,7 +54,7 @@ class _QuizPageState extends State<QuizPage> {
           }
           if (state is QuizessError) {
             return const Center(
-              child: Text('Error'),
+              child: Text('API Error'),
             );
           }
           return const Center(

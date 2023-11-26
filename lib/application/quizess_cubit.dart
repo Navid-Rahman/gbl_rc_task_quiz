@@ -10,15 +10,14 @@ part 'quizess_state.dart';
 class QuizessCubit extends Cubit<QuizessState> {
   final QuizApiService quizApiService = QuizApiService();
   late QuizModel quizData;
-  final Logger logger;
 
-  QuizessCubit({required this.logger}) : super(QuizessInitial());
+  QuizessCubit() : super(QuizessInitial());
 
   Future<void> fetchQuizData() async {
     emit(QuizessLoading());
     try {
       quizData = await quizApiService.getQuizzes();
-      emit(QuizessLoading());
+      emit(QuizessLoaded(questionList: quizData.questions));
     } catch (e) {
       emit(QuizessError(message: e.toString()));
     }
